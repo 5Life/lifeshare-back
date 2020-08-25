@@ -25,7 +25,7 @@ public class UserController {
         try {
             return new ResponseEntity<>(userService.create(userDTO), HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>("Usuario não pode ser criado", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Usuario já existente", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
