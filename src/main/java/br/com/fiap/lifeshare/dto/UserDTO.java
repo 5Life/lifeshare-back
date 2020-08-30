@@ -1,10 +1,11 @@
 package br.com.fiap.lifeshare.dto;
 
 import br.com.fiap.lifeshare.model.User;
+import com.sun.istack.NotNull;
 
 public class UserDTO {
-    private String email;
-    private String senha;
+    @NotNull private String email;
+    @NotNull private String senha;
 
     public UserDTO(String email, String senha) {
         this.email = email;
