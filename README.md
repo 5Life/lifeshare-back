@@ -11,12 +11,13 @@
       - To install Maven just run:
         - ``` sudo apt update ```
         - ``` sudo apt install maven ``` 
-        - ``` mvn -version ``` to see if it was installed 
+        - ``` mvn -version ```
 
-## running it:
+## Environment Set Up:
 
-- Go to the project root folder
-
-- ``` mvn clean install ```
-- ``` java -jar target/{name.jar} ```
-- now the project should be up and running !
+- Running server:
+    - ``` mvn clean install ```
+    - ``` java -jar target/{name.jar} ```
+        
+- Running Tests:
+    - ``` mvn test ```
