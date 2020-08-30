@@ -1,5 +1,6 @@
-package br.com.fiap.lifeshare.component;
+package br.com.fiap.lifeshare.infrasctructure.http.routing;
 
+import br.com.fiap.lifeshare.infrasctructure.http.presentation.request.UserDTOFixture;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,20 +19,20 @@ class AuthControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void shouldReturnBadCredentials() throws Exception {
-        mockMvc.perform(
-                MockMvcRequestBuilders.post("/api/auth")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content("{\"email\": \"test@test.com\", \"senha\": \"test123\" }")
-        ).andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
-
-    @Test
-    void shouldReturnOk() throws Exception {
+    void shouldUserToConnect() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/api/auth")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ \"email\": \"abc@gmail.com\", \"senha\": \"abc123\" }")
+                        .content(UserDTOFixture.getUserLogin())
         ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    void shouldntUserToConnect() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/api/auth")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(UserDTOFixture.getUserWithBadCredentials())
+        ).andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 }
