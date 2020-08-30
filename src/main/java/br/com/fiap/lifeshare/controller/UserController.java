@@ -22,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid UserDTO userDTO) {
+    public ResponseEntity<?> create(@Valid @RequestBody UserDTO userDTO) {
         try {
             return new ResponseEntity<>(userService.create(userDTO), HttpStatus.CREATED);
         } catch (Exception e) {
