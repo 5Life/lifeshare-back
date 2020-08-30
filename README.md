@@ -7,6 +7,8 @@
       - To quickly install and manage your JDKs you should use [SDKMAN](https://sdkman.io/)
         - Check [here](https://sdkman.io/install) to see how to install SDKMAN
         - And check [here](https://sdkman.io/jdks#Azul%20Systems) to see how SDKMAN can install your JDK
+        - To list all java JDKs and its versions: ``` sdk list java ```
+        
     - Maven
       - To install Maven just run:
         - ``` sudo apt update ```
