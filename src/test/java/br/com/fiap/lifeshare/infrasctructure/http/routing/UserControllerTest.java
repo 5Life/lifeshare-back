@@ -33,7 +33,7 @@ public class UserControllerTest {
                 MockMvcRequestBuilders.post("/api/user")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(UserDTOFixture.getUserWithoutPassword())
-        ).andExpect(MockMvcResultMatchers.status().isInternalServerError());
+        ).andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
 }
