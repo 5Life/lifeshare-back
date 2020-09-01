@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS TB_USER(
     id int primary key,
     email varchar(100),
-    senha varchar(100)
+    password varchar(100)
 );
 
 INSERT INTO TB_USER

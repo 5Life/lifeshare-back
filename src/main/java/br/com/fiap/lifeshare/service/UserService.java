@@ -17,7 +17,7 @@ public class UserService {
 
     public UserDTO create(UserDTO userDTO) {
         User user = userDTO.convert();
-        user.setSenha(new BCryptPasswordEncoder().encode(user.getSenha()));
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         user = userRepository.save(user);
         return user.convert();
     }

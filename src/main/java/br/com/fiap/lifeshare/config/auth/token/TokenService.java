@@ -31,7 +31,7 @@ public class TokenService {
                 .compact();
     }
 
-    public boolean isTokenValido(String token) {
+    public boolean isTokenValid(String token) {
         try {
             Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
             return true;

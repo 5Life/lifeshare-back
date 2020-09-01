@@ -1,6 +1,6 @@
 package br.com.fiap.lifeshare.model;
 
-import br.com.fiap.lifeshare.config.auth.Perfil;
+import br.com.fiap.lifeshare.config.auth.Profile;
 import br.com.fiap.lifeshare.dto.UserDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,26 +18,26 @@ public class User implements UserDetails {
     private Long id;
     @Column(unique = true)
     private String email;
-    private String senha;
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Perfil> perfis = new ArrayList<>();
+    private List<Profile> perfis = new ArrayList<>();
 
-    public User(Long id, String email, String senha) {
+    public User(Long id, String email, String password) {
         this.id = id;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
     }
 
-    public User(String email, String senha) {
+    public User(String email, String password) {
         this.email = email;
-        this.senha = senha;
+        this.password = password;
     }
 
     public User() {}
 
     public UserDTO convert() {
-        return new UserDTO(this.email, this.senha);
+        return new UserDTO(this.email, this.password);
     }
 
     public Long getId() {
@@ -56,12 +56,8 @@ public class User implements UserDetails {
         this.email = nome;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -71,7 +67,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.senha;
+        return this.password;
     }
 
     @Override

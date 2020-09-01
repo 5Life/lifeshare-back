@@ -4,10 +4,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 public class UserAuthDTO {
     private String email;
-    private String senha;
+    private String password;
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
     public String getEmail() {
@@ -15,6 +15,6 @@ public class UserAuthDTO {
     }
 
     public UsernamePasswordAuthenticationToken convert() {
-        return new UsernamePasswordAuthenticationToken(this.email, this.senha);
+        return new UsernamePasswordAuthenticationToken(this.email, this.password);
     }
 }
