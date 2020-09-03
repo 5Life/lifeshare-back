@@ -22,26 +22,27 @@ public class TokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        String token = recuperarToken(httpServletRequest);
-        boolean valido = tokenService.isTokenValido(token);
-        if (valido)
-            autentica(token);
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        String token = retrieveToken(httpServletRequest);
+        boolean valid = tokenService.isTokenValid(token);
+        if (valid)
+            authenticate(token);
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 
-    private String recuperarToken(HttpServletRequest httpServletRequest) {
+    private String retrieveToken(HttpServletRequest httpServletRequest) {
         String token = httpServletRequest.getHeader("Authorization");
         if (token == null || token.isEmpty() || !token.startsWith("Bearer "))
             return null;
         return token.substring(7, token.length());
     }
 
-    private void autentica(String token) {
-        Long usuarioId = tokenService.getIdUsuario(token);
-        User user = userRepository.findById(usuarioId).get();
-        UsernamePasswordAuthenticationToken usuarioAutenticado =
+    private void authenticate(String token) {
+        Long userId = tokenService.getUserId(token);
+        User user = userRepository.findById(userId).get();
+        UsernamePasswordAuthenticationToken authenticatedUser =
                 new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(usuarioAutenticado);
+        SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
     }
 }

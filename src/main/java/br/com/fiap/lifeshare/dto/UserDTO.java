@@ -1,23 +1,22 @@
 package br.com.fiap.lifeshare.dto;
 
 import br.com.fiap.lifeshare.model.User;
-import com.sun.istack.NotNull;
 
 import javax.validation.constraints.NotBlank;
 
 public class UserDTO {
     @NotBlank private String email;
-    @NotBlank private String senha;
+    @NotBlank private String password;
 
-    public UserDTO(String email, String senha) {
+    public UserDTO(String email, String password) {
         this.email = email;
-        this.senha = senha;
+        this.password = password;
     }
 
     private UserDTO(){}
 
     public User convert() {
-        return new User(email, senha);
+        return new User(email, password);
     }
 
     public String getEmail() {
@@ -28,11 +27,11 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
