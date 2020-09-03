@@ -40,7 +40,7 @@ public class TokenService {
         }
     }
 
-    public Long getIdUsuario(String token) {
+    public Long getUserId(String token) {
         Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
         return Long.parseLong(claims.getSubject());
     }
