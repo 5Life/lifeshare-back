@@ -38,7 +38,7 @@ public class Profile implements GrantedAuthority {
         return name;
     }
 
-    public void setName(String nome) {
-        this.name = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 }

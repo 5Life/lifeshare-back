@@ -7,18 +7,20 @@ import javax.validation.constraints.NotBlank;
 public class UserDTO {
     @NotBlank private String email;
     @NotBlank private String password;
+    private String name;
     private String bloodGroup;
 
-    public UserDTO(String email, String password, String bloodGroup) {
+    public UserDTO(String email, String password, String name, String bloodGroup) {
         this.email = email;
         this.password = password;
+        this.name = name;
         this.bloodGroup = bloodGroup;
     }
 
     private UserDTO(){}
 
     public User convert() {
-        return new User(email, password, bloodGroup);
+        return new User(email, password, name, bloodGroup);
     }
 
     public String getEmail() {
@@ -35,6 +37,14 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBloodGroup() {

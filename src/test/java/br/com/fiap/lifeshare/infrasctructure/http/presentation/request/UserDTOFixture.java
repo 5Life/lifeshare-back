@@ -7,7 +7,7 @@ public class UserDTOFixture {
 
     final static String USER_WITH_BAD_CREDENTIALS = "{\"email\": \"abc@gmail.com\", \"password\": \"010101\" }";
 
-    final static String NEW_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"bloodGroup\": \"A+\" }";
+    final static String NEW_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
 
     public static String getUserLogin() {
         return USER_LOGIN;
