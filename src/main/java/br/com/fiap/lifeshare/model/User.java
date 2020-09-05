@@ -23,7 +23,7 @@ public class User implements UserDetails {
     private String bloodGroup;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Profile> perfis = new ArrayList<>();
+    private List<Profile> profiles = new ArrayList<>();
 
     public User(Long id, String email, String password, String name, String bloodGroup) {
         this.id = id;
@@ -89,7 +89,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return perfis;
+        return profiles;
     }
 
     @Override
