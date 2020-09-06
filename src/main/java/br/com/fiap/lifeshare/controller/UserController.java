@@ -27,6 +27,8 @@ public class UserController {
         try {
             return new ResponseEntity<>(userService.create(userDTO), HttpStatus.CREATED);
         } catch (UserNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

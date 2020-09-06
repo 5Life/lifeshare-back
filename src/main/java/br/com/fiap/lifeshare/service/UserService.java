@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,13 +19,21 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserDTO create(UserDTO userDTO) throws UserNotFoundException {
+        if(userExist(userDTO.getEmail())) throw new UserNotFoundException("Usuário já foi criado");
+
         User user = userDTO.convert();
+        encryptPassword(user);
+
+        user = userRepository.save(user);
+        return user.convert();
+    }
+
+    private Boolean userExist(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.isPresent();
+    }
+
+    private void encryptPassword(User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        try {
-            user = userRepository.save(user);
-            return user.convert();
-        } catch (IllegalArgumentException e){
-            throw new UserNotFoundException("Usuário já foi criado");
-        }
     }
 }
