@@ -2,6 +2,7 @@ package br.com.fiap.lifeshare.service;
 
 import br.com.fiap.lifeshare.dto.UserDTO;
 import br.com.fiap.lifeshare.dto.UserUpdateDTO;
+import br.com.fiap.lifeshare.exception.UserAlreadyExistsException;
 import br.com.fiap.lifeshare.exception.UserNotFoundException;
 import br.com.fiap.lifeshare.model.User;
 import br.com.fiap.lifeshare.repository.UserRepository;
@@ -19,8 +20,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDTO create(UserDTO userDTO) throws UserNotFoundException {
-        if(userExist(userDTO.getEmail())) throw new UserNotFoundException("Usuário já foi criado");
+    public UserDTO create(UserDTO userDTO) throws UserAlreadyExistsException {
+        if(userExist(userDTO.getEmail())) throw new UserAlreadyExistsException("Usuário já foi criado");
 
         User user = userDTO.convert();
         encryptPassword(user);
