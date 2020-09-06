@@ -9,6 +9,8 @@ public class UserDTOFixture {
 
     final static String NEW_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
 
+    final static String CREATED_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
+
     public static String getUserLogin() {
         return USER_LOGIN;
     }
@@ -23,5 +25,9 @@ public class UserDTOFixture {
 
     public static String getNewUser() {
         return NEW_USER;
+    }
+
+    public static String getCreatedUser() {
+        return CREATED_USER;
     }
 }

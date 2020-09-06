@@ -36,4 +36,12 @@ public class UserControllerTest {
         ).andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
+    @Test
+    void userAlreadyExists() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/api/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(UserDTOFixture.getCreatedUser())
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }
