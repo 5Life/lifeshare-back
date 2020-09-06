@@ -1,11 +1,12 @@
 package br.com.fiap.lifeshare.dto;
 
-import br.com.fiap.lifeshare.model.User;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public class UserUpdateDTO {
-    private String email;
-    private String name;
-    private String bloodGroup;
+    private @NotBlank @Email String email;
+    private @NotBlank String name;
+    private @NotBlank String bloodGroup;
 
     public UserUpdateDTO() {}
 
