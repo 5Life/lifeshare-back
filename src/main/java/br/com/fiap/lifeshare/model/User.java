@@ -19,14 +19,25 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+    private String name;
+    private String bloodGroup;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Profile> perfis = new ArrayList<>();
+    private List<Profile> profiles = new ArrayList<>();
 
-    public User(Long id, String email, String password) {
+    public User(Long id, String email, String password, String name, String bloodGroup) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.name = name;
+        this.bloodGroup = bloodGroup;
+    }
+
+    public User(String email, String password, String name, String bloodGroup) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.bloodGroup = bloodGroup;
     }
 
     public User(String email, String password) {
@@ -37,7 +48,7 @@ public class User implements UserDetails {
     public User() {}
 
     public UserDTO convert() {
-        return new UserDTO(this.email, this.password);
+        return new UserDTO(this.email, this.password, this.name, this.bloodGroup);
     }
 
     public Long getId() {
@@ -52,17 +63,33 @@ public class User implements UserDetails {
         return email;
     }
 
-    public void setEmail(String nome) {
-        this.email = nome;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return perfis;
+        return profiles;
     }
 
     @Override
