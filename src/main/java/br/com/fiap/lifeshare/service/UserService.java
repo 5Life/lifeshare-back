@@ -30,10 +30,11 @@ public class UserService {
 
     public List<UserDTO> read() {
         List<User> users = userRepository.findAll();
+        if(users.isEmpty()) return Collections.emptyList();
+
         List<UserDTO> userDTOS = new ArrayList<>();
-        for (User user: users) {
-            userDTOS.add(user.convert());
-        }
+        users.forEach(user -> userDTOS.add(user.convert()));
+
         return userDTOS;
     }
 }
