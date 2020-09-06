@@ -27,14 +27,4 @@ public class UserService {
             throw new UserNotFoundException("Usuário já foi criado");
         }
     }
-
-    public List<UserDTO> read() {
-        List<User> users = userRepository.findAll();
-        if(users.isEmpty()) return Collections.emptyList();
-
-        List<UserDTO> userDTOS = new ArrayList<>();
-        users.forEach(user -> userDTOS.add(user.convert()));
-
-        return userDTOS;
-    }
 }

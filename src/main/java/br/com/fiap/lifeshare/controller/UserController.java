@@ -30,9 +30,4 @@ public class UserController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping
-    public ResponseEntity<List<UserDTO>> read(){
-        return new ResponseEntity<>(userService.read(), HttpStatus.OK);
-    }
 }
