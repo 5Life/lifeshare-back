@@ -2,6 +2,7 @@ package br.com.fiap.lifeshare.model;
 
 import br.com.fiap.lifeshare.config.auth.Profile;
 import br.com.fiap.lifeshare.dto.UserDTO;
+import br.com.fiap.lifeshare.dto.UserUpdateDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -49,6 +50,10 @@ public class User implements UserDetails {
 
     public UserDTO convert() {
         return new UserDTO(this.email, this.password, this.name, this.bloodGroup);
+    }
+
+    public UserUpdateDTO convertToUserUpdate() {
+        return new UserUpdateDTO(this.email, this.name, this.bloodGroup);
     }
 
     public Long getId() {
