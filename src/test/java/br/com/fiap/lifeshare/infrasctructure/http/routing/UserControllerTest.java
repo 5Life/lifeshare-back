@@ -44,4 +44,22 @@ public class UserControllerTest {
                         .content(UserDTOFixture.getCreatedUser())
         ).andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    @Test
+    void shouldUpdateUser() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/api/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(UserDTOFixture.getUpdatedUser())
+        ).andExpect(MockMvcResultMatchers.status().isCreated());
+    }
+
+    @Test
+    void shouldNotUpdateUser() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/api/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(UserDTOFixture.getUpdatedUserNotExistent())
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }
