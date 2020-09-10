@@ -11,6 +11,10 @@ public class UserDTOFixture {
 
     final static String CREATED_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
 
+    final static String UPDATED_USER = "{\"email\": \"abc@gmail.com\", \"name\": \"Floyd\", \"bloodGroup\": \"O-\" }";
+
+    final static String UPDATED_USER_NOT_EXISTENT = "{\"email\": \"abcd@gmail.com\", \"name\": \"Floyd\", \"bloodGroup\": \"O-\" }";
+
     public static String getUserLogin() {
         return USER_LOGIN;
     }
@@ -29,5 +33,13 @@ public class UserDTOFixture {
 
     public static String getCreatedUser() {
         return CREATED_USER;
+    }
+
+    public static String getUpdatedUser() {
+        return UPDATED_USER;
+    }
+
+    public static String getUpdatedUserNotExistent() {
+        return UPDATED_USER_NOT_EXISTENT;
     }
 }
