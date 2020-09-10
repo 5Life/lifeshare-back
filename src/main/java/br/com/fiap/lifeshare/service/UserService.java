@@ -21,7 +21,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserDTO create(UserDTO userDTO) throws UserAlreadyExistsException {
-        if(userExist(userDTO.getEmail())) throw new UserAlreadyExistsException("Usuário já foi criado");
+        if(userExist(userDTO.getEmail())) throw new UserAlreadyExistsException("Usuário já existe.");
 
         User user = userDTO.convert();
         encryptPassword(user);
