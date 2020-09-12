@@ -39,7 +39,7 @@ public class AuthController {
             e.printStackTrace();
             return new ResponseEntity<>(
                 new ResponseDTO(
-                        "It was not possible to authenticate a user", null
+                        "Não foi possível autenticar o usuário", null
                 ), HttpStatus.BAD_REQUEST
             );
         }
