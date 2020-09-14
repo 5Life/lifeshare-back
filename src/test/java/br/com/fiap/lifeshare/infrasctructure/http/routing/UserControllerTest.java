@@ -67,7 +67,7 @@ public class UserControllerTest {
                 MockMvcRequestBuilders.put("/api/user")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(UserDTOFixture.getUpdatedUser())
-        ).andExpect(MockMvcResultMatchers.status().isCreated());
+        ).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @WithMockUser("abc@gmail.com")
