@@ -1,23 +1,22 @@
 package br.com.fiap.lifeshare.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.com.fiap.lifeshare.dto.ResponseDTO;
 import br.com.fiap.lifeshare.dto.UserDTO;
 import br.com.fiap.lifeshare.dto.UserUpdateDTO;
 import br.com.fiap.lifeshare.exception.UserAlreadyExistsException;
 import br.com.fiap.lifeshare.exception.UserNotFoundException;
-import br.com.fiap.lifeshare.model.User;
-import br.com.fiap.lifeshare.repository.UserRepository;
 import br.com.fiap.lifeshare.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -26,7 +25,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> create(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<ResponseDTO> create(@Valid @RequestBody UserDTO userDTO) {
         try {
             return new ResponseEntity<>(
                 new ResponseDTO(
@@ -41,7 +40,7 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<?> update(@Valid @RequestBody UserUpdateDTO userUpdateDTO) {
+    public ResponseEntity<ResponseDTO> update(@Valid @RequestBody UserUpdateDTO userUpdateDTO) {
         try {
             return new ResponseEntity<>(
                 new ResponseDTO(

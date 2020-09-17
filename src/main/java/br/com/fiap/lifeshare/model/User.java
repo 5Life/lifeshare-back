@@ -1,15 +1,24 @@
 package br.com.fiap.lifeshare.model;
 
-import br.com.fiap.lifeshare.config.auth.Profile;
-import br.com.fiap.lifeshare.dto.UserDTO;
-import br.com.fiap.lifeshare.dto.UserUpdateDTO;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import br.com.fiap.lifeshare.config.auth.Profile;
+import br.com.fiap.lifeshare.dto.UserDTO;
+import br.com.fiap.lifeshare.dto.UserUpdateDTO;
 
 @Entity
 @Table(name = "TB_USER")

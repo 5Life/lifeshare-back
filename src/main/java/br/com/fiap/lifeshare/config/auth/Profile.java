@@ -1,11 +1,11 @@
 package br.com.fiap.lifeshare.config.auth;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 public class Profile implements GrantedAuthority {

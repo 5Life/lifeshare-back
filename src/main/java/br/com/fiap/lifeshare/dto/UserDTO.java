@@ -1,8 +1,8 @@
 package br.com.fiap.lifeshare.dto;
 
-import br.com.fiap.lifeshare.model.User;
-
 import javax.validation.constraints.NotBlank;
+
+import br.com.fiap.lifeshare.model.User;
 
 public class UserDTO {
     @NotBlank private String email;

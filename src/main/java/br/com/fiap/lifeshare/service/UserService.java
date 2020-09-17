@@ -1,19 +1,17 @@
 package br.com.fiap.lifeshare.service;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import br.com.fiap.lifeshare.dto.UserDTO;
 import br.com.fiap.lifeshare.dto.UserUpdateDTO;
 import br.com.fiap.lifeshare.exception.UserAlreadyExistsException;
 import br.com.fiap.lifeshare.exception.UserNotFoundException;
 import br.com.fiap.lifeshare.model.User;
 import br.com.fiap.lifeshare.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -30,7 +28,7 @@ public class UserService {
         return user.convert();
     }
 
-    private Boolean userExist(String email) {
+    private boolean userExist(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         return user.isPresent();
     }
