@@ -19,7 +19,7 @@
 
 - Running server:
     - ``` mvn clean install ```
-    - ``` java -jar target/{name.jar} ```
+    - ``` java -jar -Dserver.port=8080 target/{name.jar} ```
         
 - Running Tests:
     - ``` mvn test ```
