@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.lifeshare.dto.ResponseDTO;
 import br.com.fiap.lifeshare.dto.UserDTO;
+import br.com.fiap.lifeshare.dto.UserDeleteDTO;
 import br.com.fiap.lifeshare.dto.UserUpdateDTO;
 import br.com.fiap.lifeshare.exception.UserAlreadyExistsException;
 import br.com.fiap.lifeshare.exception.UserNotFoundException;
@@ -46,6 +48,21 @@ public class UserController {
                 new ResponseDTO(
                         "Usuário atualizado com sucesso.", userService.update(userUpdateDTO)
                 ), HttpStatus.OK
+            );
+        } catch (UserNotFoundException e) {
+            return new ResponseEntity<>(new ResponseDTO(e.getMessage(), null), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ResponseDTO(e.getMessage(), null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping
+    public ResponseEntity<ResponseDTO> delete(@Valid @RequestBody UserDeleteDTO userDeleteDTO) {
+        try {
+            userService.delete(userDeleteDTO);
+            
+            return new ResponseEntity<>(
+                new ResponseDTO("Usuário deletado com sucesso.", null), HttpStatus.OK
             );
         } catch (UserNotFoundException e) {
             return new ResponseEntity<>(new ResponseDTO(e.getMessage(), null), HttpStatus.OK);
