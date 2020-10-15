@@ -79,4 +79,24 @@ public class UserControllerTest {
                         .content(UserDTOFixture.getUpdatedUserNotExistent())
         ).andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    @WithMockUser("abc@gmail.com")
+    @Test
+    void shouldDeleteUser() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/api/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(UserDTOFixture.getUserWithoutPassword())
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @WithMockUser("abc@gmail.com")
+    @Test
+    void shouldNotDeleteUser() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/api/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(UserDTOFixture.getUserWrongEmail())
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }

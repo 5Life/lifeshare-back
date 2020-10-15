@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.lifeshare.dto.UserDTO;
+import br.com.fiap.lifeshare.dto.UserDeleteDTO;
 import br.com.fiap.lifeshare.dto.UserUpdateDTO;
 import br.com.fiap.lifeshare.exception.UserAlreadyExistsException;
 import br.com.fiap.lifeshare.exception.UserNotFoundException;
@@ -46,5 +47,16 @@ public class UserService {
 
         User newUser = userRepository.save(user.get());
         return newUser.convertToUserUpdate();
+    }
+
+    public void delete(UserDeleteDTO userDeleteDTO) throws UserNotFoundException {
+        String email = userDeleteDTO.getEmail();
+        Optional<User> user = userRepository.findByEmail(email);
+
+        if(user.isEmpty()) throw new UserNotFoundException("Usuário não existe para ser atualizado");
+
+        user.get().setStatus(false);
+
+        userRepository.save(user.get());
     }
 }

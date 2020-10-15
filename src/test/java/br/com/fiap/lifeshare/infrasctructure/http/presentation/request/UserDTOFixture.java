@@ -5,6 +5,8 @@ public class UserDTOFixture {
 
     final static String USER_WITHOUT_PASSWORD = "{\"email\": \"abc@gmail.com\" }";
 
+    final static String USER_WRONG_EMAIL = "{\"email\": \"abcd@gmail.com\" }";
+
     final static String USER_WITH_BAD_CREDENTIALS = "{\"email\": \"abc@gmail.com\", \"password\": \"010101\" }";
 
     final static String NEW_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
@@ -41,5 +43,9 @@ public class UserDTOFixture {
 
     public static String getUpdatedUserNotExistent() {
         return UPDATED_USER_NOT_EXISTENT;
+    }
+
+    public static String getUserWrongEmail() {
+        return USER_WRONG_EMAIL;
     }
 }
