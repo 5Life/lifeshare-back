@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +46,18 @@ public class DonationController {
             return new ResponseEntity<>(
                 new ResponseDTO(
                     "Doação deletada com sucesso.", null), HttpStatus.OK
+            );
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ResponseDTO(e.getMessage(), null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<ResponseDTO> update(@Valid @RequestBody DonationDTO donationDTO) {
+        try {
+            return new ResponseEntity<>(
+                new ResponseDTO(
+                    "Doação atualizada com sucesso.", donationService.update(donationDTO)), HttpStatus.OK
             );
         } catch (Exception e) {
             return new ResponseEntity<>(new ResponseDTO(e.getMessage(), null), HttpStatus.INTERNAL_SERVER_ERROR);

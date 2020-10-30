@@ -12,6 +12,7 @@ import br.com.fiap.lifeshare.model.Donation;
 import br.com.fiap.lifeshare.model.User;
 import br.com.fiap.lifeshare.repository.DonationRepository;
 import br.com.fiap.lifeshare.repository.UserRepository;
+import br.com.fiap.lifeshare.utils.DateUtil;
 
 @Service
 public class DonationService {
@@ -37,11 +38,24 @@ public class DonationService {
     }
 
 	public void delete(Long id) throws Exception {
-        Optional<Donation> donation= donationRepository.findById(id);
+        Optional<Donation> donation = donationRepository.findById(id);
 
         if(donation.isEmpty()) throw new DonationNotFoundException("Doação não existe para ser deletada");
 
         donationRepository.deleteById(id);
     }
+
+	public DonationDTO update(DonationDTO donationDTO) throws DonationNotFoundException {
+		Optional<Donation> donation = donationRepository.findById(donationDTO.getId());
+
+        if(donation.isEmpty()) throw new DonationNotFoundException("Doação não existe para ser atualizada");
+
+        donation.get().setDate(DateUtil.stringToCalendar(donationDTO.getDate()));
+        donation.get().setLocation(donationDTO.getLocation());
+        donation.get().setOrgan(donationDTO.getOrgan());
+        donation.get().setType(donationDTO.getType());
+
+        return donationRepository.save(donation.get()).convert();
+	}
 
 }
