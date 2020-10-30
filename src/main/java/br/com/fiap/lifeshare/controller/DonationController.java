@@ -41,7 +41,7 @@ public class DonationController {
     @DeleteMapping
     public ResponseEntity<ResponseDTO> delete(@RequestParam String id) {
         try {
-            donationService.delete(Long.parseLong(id);
+            donationService.delete(Long.parseLong(id));
             return new ResponseEntity<>(
                 new ResponseDTO(
                     "Doação deletada com sucesso.", null), HttpStatus.OK
