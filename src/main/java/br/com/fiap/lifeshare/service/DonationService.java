@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.lifeshare.dto.DonationDTO;
+import br.com.fiap.lifeshare.exception.DonationNotFoundException;
 import br.com.fiap.lifeshare.exception.UserNotFoundException;
 import br.com.fiap.lifeshare.model.Donation;
 import br.com.fiap.lifeshare.model.User;
@@ -34,4 +35,13 @@ public class DonationService {
 
         return donationDTO;
     }
+
+	public void delete(Long id) throws Exception {
+        Optional<Donation> donation= donationRepository.findById(id);
+
+        if(donation.isEmpty()) throw new DonationNotFoundException("Doação não existe para ser deletada");
+
+        donationRepository.deleteById(id);
+    }
+
 }
