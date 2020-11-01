@@ -18,7 +18,7 @@
 ## Environment Set Up:
 
 - Running server:
-    - ``` mvn clean install ```
+    - ``` mvn -Dserver.port=8080 clean install ```
     - ``` java -jar -Dserver.port=8080 target/{name.jar} ```
         
 - Running Tests:

@@ -1,7 +1,7 @@
 package br.com.fiap.lifeshare.infrasctructure.http.presentation.request;
 
 public class UserDTOFixture {
-    final static String USER_LOGIN = "{\"email\": \"abc@gmail.com\", \"password\": \"abc123\" }";
+    final static String USER_LOGIN = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123\" }";
 
     final static String USER_WITHOUT_PASSWORD = "{\"email\": \"abc@gmail.com\" }";
 
@@ -9,9 +9,9 @@ public class UserDTOFixture {
 
     final static String USER_WITH_BAD_CREDENTIALS = "{\"email\": \"abc@gmail.com\", \"password\": \"010101\" }";
 
-    final static String NEW_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
+    final static String NEW_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123\", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
 
-    final static String CREATED_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123 \", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
+    final static String CREATED_USER = "{\"email\": \"abc_def@gmail.com\", \"password\": \"def123\", \"name\": \"Floid\", \"bloodGroup\": \"A+\" }";
 
     final static String UPDATED_USER = "{\"email\": \"abc@gmail.com\", \"name\": \"Floyd\", \"bloodGroup\": \"O-\" }";
 
