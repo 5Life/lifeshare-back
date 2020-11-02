@@ -25,3 +25,8 @@ hs_err_pid*
 # Miscelaneous
 .idea/
 *.iml
+target/
+.classpath
+.project
+.settings/
+.vscode/
